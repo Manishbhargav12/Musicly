@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>musicly - Music Player</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="spotify.css">
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="logo">
+                <i class="fas fa-music"></i>
+                <span>Musicly</span>
+            </div>
+            
+            <div class="nav-section">
+                <div class="nav-title">Library</div>
+                <div class="nav-item active">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fas fa-home"></i>
+                    <span>Search</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fas fa-music"></i>
+                    <span>Songs</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fas fa-compact-disc"></i>
+                    <span>Albums</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fas fa-user"></i>
+                    <span>Artists</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fas fa-broadcast-tower"></i>
+                    <span>Radio</span>
+                </div>
+            </div>
+            
+            <div class="nav-section">
+                <div class="nav-title">My Music</div>
+                <div class="nav-item">
+                    <i class="fas fa-history"></i>
+                    <span>Recently Played</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fas fa-heart"></i>
+                    <span>Favorite Songs</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fas fa-heart"></i>
+                    <span>Playlists</span>
+                </div>
+                <div class="nav-item">
+                    <i class="fas fa-folder"></i>
+                    <span>Local Music</span>
+                </div>
+            </div>
+        </aside>
+        
+        <main class="main-content">
+            <h1 class="greeting">Good afternoon</h1>
+            
+            <section class="featured-playlist">
+                <h2 class="section-title">Featured Playlist</h2>
+                <div class="playlist-card">
+                    <img src="https://placehold.co/150x150" alt="Featured playlist cover with neon lights and modern design" class="playlist-cover">
+                    <div class="playlist-info">
+                        <h3 class="playlist-title">Summer Vibes</h3>
+                        <p class="playlist-description">The perfect mix of tropical house and chill beats to get you in the summer mood.</p>
+                        <div class="playlist-stats">
+                            <span><i class="fas fa-heart"></i> 1.2M</span>
+                            <span><i class="fas fa-music"></i> 50 songs</span>
+                            <span><i class="fas fa-clock"></i> 2h 45m</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="artists-section">
+                <h2 class="section-title">Popular Artists</h2>
+                <div id="artist-container"class="artists-container">
+                    <div class="artist-card">
+                        <img src="https://placehold.co/150x150" alt="Artist portrait with vibrant colors" class="artist-image">
+                        <span class="artist-name">The Weeknd</span>
+                    </div>
+                    <div class="artist-card">
+                        <img src="https://placehold.co/150x150" alt="Artist performing on stage" class="artist-image">
+                        <span class="artist-name">Dua Lipa</span>
+                    </div>
+                    <div class="artist-card" id="Arjit_singh">
+                        <img src="https://placehold.co/150x150" alt="Artist in studio recording" class="artist-image">
+                        <span class="artist-name">Arjit Singh</span>
+                    </div>
+                    <div class="artist-card">
+                        <img src="https://placehold.co/150x150" alt="Artist profile with dramatic lighting" class="artist-image">
+                        <span class="artist-name">Billie Eilish</span>
+                    </div>
+                    <div class="artist-card">
+                        <img src="https://placehold.co/150x150" alt="Artist black and white portrait" class="artist-image">
+                        <span class="artist-name">Ed Sheeran</span>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="recently-played-section">
+                <h2 class="section-title">Recently Played</h2>
+                <div class="songs-list">
+                    <div class="song-item">
+                        <div class="song-number">1</div>
+                        <div class="song-info">
+                            <img src="https://placehold.co/50x50" alt="Album cover with geometric design" class="song-cover">
+                            <div class="song-details">
+                                <h3 class="song-title">Blinding Lights</h3>
+                                <p class="song-artist">The Weeknd</p>
+                            </div>
+                        </div>
+                        <div class="song-duration">3:20</div>
+                    </div>
+                    <div class="song-item">
+                        <div class="song-number">2</div>
+                        <div class="song-info">
+                            <img src="https://placehold.co/50x50" alt="Album cover with neon typography" class="song-cover">
+                            <div class="song-details">
+                                <h3 class="song-title">Don't Start Now</h3>
+                                <p class="song-artist">Dua Lipa</p>
+                            </div>
+                        </div>
+                        <div class="song-duration">3:03</div>
+                    </div>
+                    <div class="song-item">
+                        <div class="song-number">3</div>
+                        <div class="song-info">
+                            <img src="https://placehold.co/50x50" alt="Album cover with abstract artwork" class="song-cover">
+                            <div class="song-details">
+                                <h3 class="song-title">Save Your Tears</h3>
+                                <p class="song-artist">The Weeknd</p>
+                            </div>
+                        </div>
+                        <div class="song-duration">3:35</div>
+                    </div>
+                    <div class="song-item">
+                        <div class="song-number">4</div>
+                        <div class="song-info">
+                            <img src="https://placehold.co/50x50" alt="Album cover with vibrant colors" class="song-cover">
+                            <div class="song-details">
+                                <h3 class="song-title">Levitating</h3>
+                                <p class="song-artist">Dua Lipa ft. DaBaby</p>
+                            </div>
+                        </div>
+                        <div class="song-duration">3:23</div>
+                    </div>
+                    <div class="song-item">
+                        <div class="song-number">5</div>
+                        <div class="song-info">
+                            <img src="https://placehold.co/50x50" alt="Album cover with minimalist design" class="song-cover">
+                            <div class="song-details">
+                                <h3 class="song-title">Stay</h3>
+                                <p class="song-artist">The Kid LAROI, Justin Bieber</p>
+                            </div>
+                        </div>
+                        <div class="song-duration">2:21</div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <aside class="right-panel">
+            <h3 class="right-panel-title">
+                <span>Now Playing</span>
+                <i class="fas fa-list"></i>
+            </h3>
+            
+            <img src="https://placehold.co/250x250" alt="Current album cover with neon aesthetic" class="player-cover" style="width: 100%; border-radius: 10px; margin-bottom: 20px;">
+            
+            <h3 style="font-size: 20px; margin-bottom: 5px;">Blinding Lights</h3>
+            <p style="color: var(--gray); margin-bottom: 30px;">The Weeknd</p>
+            
+            <div class="queue-title">Next in queue</div>
+            <div class="queue-list">
+                <div class="queue-item">
+                    <img src="https://placehold.co/50x50" alt="Next album cover" class="queue-cover">
+                    <div class="queue-details">
+                        <h4 class="queue-title">Save Your Tears</h4>
+                        <p class="queue-artist">The Weeknd</p>
+                    </div>
+                </div>
+                <div class="queue-item">
+                    <img src="https://placehold.co/50x50" alt="Next album cover" class="queue-cover">
+                    <div class="queue-details">
+                        <h4 class="queue-title">Don't Start Now</h4>
+                        <p class="queue-artist">Dua Lipa</p>
+                    </div>
+                </div>
+                <div class="queue-item">
+                    <img src="https://placehold.co/50x50" alt="Next album cover" class="queue-cover">
+                    <div class="queue-details">
+                        <h4 class="queue-title">Levitating</h4>
+                        <p class="queue-artist">Dua Lipa ft. DaBaby</p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+    
+    <div class="player-controls">
+        <div class="player-song-info">
+            <img src="https://placehold.co/50x50" alt="Currently playing album cover" class="player-cover">
+            <div class="player-song-details">
+                <h3 class="player-song-title">Blinding Lights</h3>
+                <p class="player-song-artist">The Weeknd</p>
+            </div>
+            <i class="fas fa-heart"></i>
+        </div>
+        
+        <div class="player-center-controls">
+            <div class="player-buttons">
+                <button class="player-button"><i class="fas fa-random"></i></button>
+                <button class="player-button"><i class="fas fa-step-backward"></i></button>
+                <button id="play" class="player-button play"><i class="fas fa-pause"></i></button>
+                <button class="player-button"><i class="fas fa-step-forward"></i></button>
+                <button class="player-button"><i class="fas fa-redo"></i></button>
+            </div>
+            
+            <div class="player-progress">
+                <span class="progress-time">0:00</span>
+                <div class="progress-bar">
+                    <div class="progress-bar-fill"></div>
+                </div>
+                <span class="progress-time">3:20</span>
+            </div>
+        </div>
+        
+        <div class="player-right-controls">
+            <div class="volume-control">
+                <button class="player-button"><i class="fas fa-volume-up"></i></button>
+                <div class="volume-bar">
+                    <div class="volume-bar-fill"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script src="spotify.js" defer>
+
+</script>
+
+</body>
+</html>
