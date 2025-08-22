@@ -244,6 +244,52 @@ window.onload = () => {
 //     loadSongs(artistNames.textContent)
 //     console.log(artistNames.textContent)
 // })
- 
+ const openBtn = document.getElementById("nav-item");
+const closeBtn = document.getElementById("closeSearchBtn");
+const overlay = document.getElementById("searchOverlay");
+
+openBtn.addEventListener("click", () => {
+  overlay.style.display = "block";
+  document.getElementById("searchInput").focus();
+});
+
+closeBtn.addEventListener("click", () => {
+  overlay.style.display = "none";
+});
+
+// Handle Search (dummy data for now)
+document.getElementById("searchInput").addEventListener("keyup", (e) => {
+  if (e.key === "Enter") {
+    performSearch(e.target.value);
+  }
+});
+
+function performSearch(query) {
+  if (!query) return;
+
+  // TODO: Replace with real API call
+  const dummyResults = [
+    { title: "Song A", artist: "Artist 1", id: "vid1" },
+    { title: "Song B", artist: "Artist 2", id: "vid2" },
+  ];
+
+  const resultsDiv = document.getElementById("searchResults");
+  resultsDiv.innerHTML = dummyResults
+    .map(
+      (r) => `
+        <div class="song">
+          <span>${r.title} - ${r.artist}</span>
+          <button onclick="playSong('${r.id}')">Play</button>
+        </div>
+      `
+    )
+    .join("");
+}
+
+function playSong(id) {
+  console.log("Playing:", id);
+  // hook into your player logic
+}
 // Arjit_singh
+
 
