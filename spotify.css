@@ -1,35 +1,117 @@
- :root {
-            --primary: #6c5ce7;
-            --secondary: #a29bfe;
-            --dark: #2d3436;
-            --light: #f5f6fa;
-            --gray: #636e72;
-            --success: #00b894;
-        }
+:root {
+    --primary: #6c5ce7;
+    --secondary: #a29bfe;
+    --dark: #2d3436;
+    --light: #f5f6fa;
+    --gray: #636e72;
+    --success: #00b894;
+}
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
-        body {
-            background-color: #121212;
-            color: white;
-            height: 100vh;
-            display: grid;
-            grid-template-rows: auto 80px;
-            overflow: hidden;
-            font-family: sans-serif;
-            font-size: 1rem;
-        }
+body {
+    background-color: #121212;
+    color: white;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: auto 80px;
+    overflow: hidden;
+    font-family: sans-serif;
+    font-size: 1rem;
+}
 
-        .app-container {
-            display: grid;
-            grid-template-columns: 250px 1fr 300px;
-            height: calc(100vh - 80px);
-        }
+.app-container {
+    display: grid;
+    grid-template-columns: 250px 1fr 300px;
+    height: calc(100vh - 80px);
+}
+
+.sidebar {
+    background-color: #000000;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.main-content {
+    background: linear-gradient(#121212, #1a1a1a);
+    padding: 25px;
+    overflow-y: auto;
+}
+
+.right-panel {
+    background-color: #000000;
+    padding: 20px;
+    overflow-y: auto;
+    border-left: 1px solid #282828;
+}
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
+    .app-container {
+        grid-template-columns: 250px 1fr;
+    }
+    .right-panel {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .app-container {
+        grid-template-columns: 1fr;
+    }
+    .sidebar {
+        display: none;
+    }
+    .playlist-card {
+        flex-direction: column;
+    }
+    .playlist-cover {
+        width: 100%;
+        height: auto;
+    }
+    .player-controls {
+        flex-direction: column;
+        align-items: center;
+    }
+    .player-song-info {
+        flex-direction: column;
+        align-items: center;
+    }
+    .player-right-controls {
+        justify-content: center;
+    }
+}
+
+/* Additional styles for better responsiveness */
+.player-controls {
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    border-top: 1px solid #282828;
+    flex-wrap: wrap; /* Allow wrapping for smaller screens */
+}
+
+.player-buttons {
+    display: flex;
+    gap: 10px; /* Adjusted gap for smaller screens */
+}
+
+.volume-control {
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Adjusted gap for smaller screens */
+}
+
+
+
+
+
+:
 
         /* Sidebar Styles */
 /* Reset or global b
@@ -596,4 +678,5 @@ h1, h2, h3 {
             }
 
         }
+
 
