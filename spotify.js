@@ -5,6 +5,35 @@ let audio = new Audio();
 let isPlaying = false;
 let progressInterval;
 
+
+//api fetch last fm
+const apiKey="919dbfaa6b84bfe9b7fb4a43a75f13f9"
+const lastfm_url = `https://ws.audioscrobbler.com/2.0/?method=geo.gettopartists&country=india&api_key=${apiKey}&format=json`;
+async function getTopArtists() {
+      try {
+        const response = await fetch(lastfm_url);
+        const data = await response.json();
+        console.log(data);
+        const artistsDiv = document.getElementsByClassName("artists-section");
+        artistsDiv.innerHTML = "";
+
+        data.topartists.artist.slice(0, 10).forEach(artist => {
+          const img = artist.image.find(img => img.size === "large")["#text"];
+          const name = artist.name;
+
+          const artistCard = document.createElement("div");
+          artistCard.innerHTML = `
+            <img src="${img}" alt="${name}" style="width:100px;height:100px;border-radius:50%">
+            <p>${name}</p>
+          `;
+          artistsDiv.appendChild(artistCard);
+        });
+      } catch (error) {
+        console.error("Error fetching artists:", error);
+      }
+    }
+    getTopArtists();
+
 /* ---------------- FETCH SONGS (iTunes API) ---------------- */
 async function fetchSongs(query = "The Weeknd") {
     let url = `https://itunes.apple.com/search?term=${encodeURIComponent(query)}&entity=song&limit=10&country=US`;
@@ -248,14 +277,14 @@ window.onload = () => {
 const closeBtn = document.getElementById("closeSearchBtn");
 const overlay = document.getElementById("searchOverlay");
 
-openBtn.addEventListener("click", () => {
-  overlay.style.display = "block";
-  document.getElementById("searchInput").focus();
-});
+// openBtn.addEventListener("click", () => {
+//   overlay.style.display = "block";
+//   document.getElementById("searchInput").focus();
+// });
 
-closeBtn.addEventListener("click", () => {
-  overlay.style.display = "none";
-});
+// closeBtn.addEventListener("click", () => {
+//   overlay.style.display = "none";
+// });
 
 // Handle Search (dummy data for now)
 document.getElementById("searchInput").addEventListener("keyup", (e) => {
