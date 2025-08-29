@@ -3,38 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>musicly - Music Player</title>
+    <title>Rish - Music Player</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="spotify.css">
+    <link rel="icon" type="image/jpeg" href="src/arjit.jpeg" >
 </head>
 <body>
+    
     <div class="app-container">
         <aside class="sidebar">
-            <div class="logo">
+            <!-- <div class="logo">
                 <i class="fas fa-music"></i>
-                <span>Musicly</span>
-            </div>
+                <span>ℜ𝔦𝔰𝔥</span>
+            </div> -->
             
             <div class="nav-section">
-                <div class="nav-title">Library</div>
+                <!-- <div class="nav-title">Library</div> -->
                 <div class="nav-item active">
                     <i class="fas fa-home"></i>
                     <span>Home</span>
                 </div>
-                <div class="nav-item">
-                    <i class="fas fa-home"></i>
+                <div class="nav-item" id="openSearchBtn">
+                    <i class="fas fa-search"></i>
                     <span>Search</span>
                 </div>
 
-                <!-- Search Button -->
-<!-- Fullscreen Search Overlay -->
-<div id="searchOverlay" class="overlay">
-  <div class="overlay-content">
-    <input type="text" id="searchInput" placeholder="Search songs, artists..." />
-    <button id="closeSearchBtn">✖</button>
-    <div id="searchResults"></div>
-  </div>
-</div>
                 
                 <div class="nav-item">
                     <i class="fas fa-music"></i>
@@ -75,13 +68,36 @@
             </div>
         </aside>
         
-        <main class="main-content">
-            <h1 class="greeting">Good afternoon</h1>
-            
+            <main class="main-content">
+                <nav class="navbar">
+                <div class="logo">ℜ𝔦𝔰𝔥</div>
+                
+                <div class="searchBar">
+                <input type="text" id="searchInput" placeholder="Search songs, artists...">
+                </div>
+                
+                <div class="auth-buttons">
+                <button class="login-btn" role="button">Login</button>
+                <!-- <button class="signup-btn" role="button">Sign Up</button> -->
+                <button class="signup-btn" role="button"><span class="text">Sign Up</span><span>Register</span></button>
+
+
+                
+
+
+
+                </div>
+            </nav>
+                <!-- <h1 class="greeting">𝔊𝔬𝔬𝔡 <span id="time">𝔞𝔣𝔱𝔢𝔯𝔫𝔬𝔬𝔫</span></h1> -->
+            <!-- Search Button -->
+            <!-- <div id="searchBar" class="search-popup"> -->
+            <!-- <input type="text"  placeholder="Search songs, artists..." /> -->
+            <!-- </div> -->
+
             <section class="featured-playlist">
                 <h2 class="section-title">Featured Playlist</h2>
                 <div class="playlist-card">
-                    <img src="https://placehold.co/150x150" alt="Featured playlist cover with neon lights and modern design" class="playlist-cover">
+                    <img src="src/summer.jpg" alt="Featured playlist cover with neon lights and modern design" class="playlist-cover">
                     <div class="playlist-info">
                         <h3 class="playlist-title">Summer Vibes</h3>
                         <p class="playlist-description">The perfect mix of tropical house and chill beats to get you in the summer mood.</p>
@@ -96,27 +112,45 @@
             
             <section class="artists-section">
                 <h2 class="section-title">Popular Artists</h2>
-                <div id="artist-container"class="artists-container">
-                    <div class="artist-card">
-                        <img src="https://placehold.co/150x150" alt="Artist portrait with vibrant colors" class="artist-image">
-                        <span class="artist-name">The Weeknd</span>
+                
+                <!-- Navigation Buttons -->
+                <div class="artist-nav">
+                    <button id="prevArtist" class="artist-btn"><i class="fas fa-chevron-left"></i></button>
+                    <div id="artist-container" class="artists-container">
+                        <div class="artist-card">
+                            <img src="src/Yo Yo Honey Singh.jpeg" alt="Artist portrait" class="artist-image">
+                            <span class="artist-name">Yo Yo Honey Singh</span>
+                        </div>
+                        <div class="artist-card">
+                            <img src="src/weekend.jpeg" alt="Artist portrait" class="artist-image">
+                            <span class="artist-name">The Weeknd</span>
+                        </div>
+                        <div class="artist-card">
+                            <img src="src/talor swift.jpeg" alt="Artist portrait" class="artist-image">
+                            <span class="artist-name">Taylor Swift</span>
+                        </div>
+                        <div class="artist-card">
+                            <img src="src/dua lipa.jpeg" alt="Artist portrait" class="artist-image">
+                            <span class="artist-name">Dua Lipa</span>
+                        </div>
+                        <div class="artist-card">
+                            <img src="src/arjit.jpeg" alt="Artist portrait" class="artist-image">
+                            <span class="artist-name">Arijit Singh</span>
+                        </div>
+                        <div class="artist-card">
+                            <img src="src/billie.jpeg" alt="Artist portrait" class="artist-image">
+                            <span class="artist-name">Billie Eilish</span>
+                        </div>
+                        <div class="artist-card">
+                            <img src="src/kishor kumar.jpeg" alt="Artist portrait" class="artist-image">
+                            <span class="artist-name">Kishore Kumar</span>
+                        </div>
+                        <div class="artist-card">
+                            <img src="src/shreyaGhoshal.jpeg" alt="Artist portrait" class="artist-image">
+                            <span class="artist-name">shreya Ghoshal</span>
+                        </div>
                     </div>
-                    <div class="artist-card">
-                        <img src="https://placehold.co/150x150" alt="Artist performing on stage" class="artist-image">
-                        <span class="artist-name">Dua Lipa</span>
-                    </div>
-                    <div class="artist-card" id="Arjit_singh">
-                        <img src="https://placehold.co/150x150" alt="Artist in studio recording" class="artist-image">
-                        <span class="artist-name">Arjit Singh</span>
-                    </div>
-                    <div class="artist-card">
-                        <img src="https://placehold.co/150x150" alt="Artist profile with dramatic lighting" class="artist-image">
-                        <span class="artist-name">Billie Eilish</span>
-                    </div>
-                    <div class="artist-card">
-                        <img src="https://placehold.co/150x150" alt="Artist black and white portrait" class="artist-image">
-                        <span class="artist-name">Ed Sheeran</span>
-                    </div>
+                    <button id="nextArtist" class="artist-btn"><i class="fas fa-chevron-right"></i></button>
                 </div>
             </section>
             
@@ -179,7 +213,7 @@
                         <div class="song-duration">2:21</div>
                     </div>
                 </div>
-            </section>
+            </section>  
         </main>
         
         <aside class="right-panel">
@@ -192,7 +226,7 @@
             
             <h3 style="font-size: 20px; margin-bottom: 5px;">Blinding Lights</h3>
             <p style="color: var(--gray); margin-bottom: 30px;">The Weeknd</p>
-            
+<!--             
             <div class="queue-title">Next in queue</div>
             <div class="queue-list">
                 <div class="queue-item">
@@ -216,13 +250,13 @@
                         <p class="queue-artist">Dua Lipa ft. DaBaby</p>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </aside>
     </div>
     
     <div class="player-controls">
         <div class="player-song-info">
-            <img src="https://placehold.co/50x50" alt="Currently playing album cover" class="player-cover">
+            <img src="https://placehold.co/50x50" alt="Currently playing album cover" class="player-cover_small">
             <div class="player-song-details">
                 <h3 class="player-song-title">Blinding Lights</h3>
                 <p class="player-song-artist">The Weeknd</p>
@@ -250,7 +284,8 @@
         
         <div class="player-right-controls">
             <div class="volume-control">
-                <button class="player-button"><i class="fas fa-volume-up"></i></button>
+                    <!-- <audio id="audioPlayer"></audio> -->
+                <button class="player-button" id="mute"><i class="fas fa-volume-up"></i></button>
                 <div class="volume-bar">
                     <div class="volume-bar-fill"></div>
                 </div>
