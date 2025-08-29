@@ -5,34 +5,81 @@ let audio = new Audio();
 let isPlaying = false;
 let progressInterval;
 
-
+// player-cover
 //api fetch last fm
+// popular artists
+
+
+// const API_URL = "https://jiosaavn-api-privatecvc2.vercel.app/search/songs?query=";
+
+// async function searchSongs(query) {
+//     try {
+//         let res = await fetch(API_URL + encodeURIComponent(query));
+//         let data = await res.json();
+
+//         // console.log(data); // see structure in console
+
+//         // Example: display first 5 results
+//         let resultsDiv = document.getElementById("searchResults");
+//         resultsDiv.innerHTML = "";
+
+//         data.data.results.slice(0, 5).forEach(song => {
+//             let songDiv = document.createElement("div");
+//             songDiv.classList.add("song-item");
+
+//             // Song name + image + play button
+//             songDiv.innerHTML = `
+//                 <img src="${song.image}" width="50"/>
+//                 <span>${song.title} - ${song.more_info.singer}</span>
+//                 <button onclick="playSong('${song.more_info.encrypted_media_url}')">▶</button>
+//             `;
+//             resultsDiv.appendChild(songDiv);
+//         });
+//     } catch (err) {
+//         console.error("Error fetching songs:", err);
+//     }
+// }
+
+let _audio = new Audio();
+
+function playSong(url) {
+    // Usually you need to decode or fetch actual mp3 link
+    _audio.src = url;
+    _audio.play();
+}
+// searchSongs("The Weeknd");
+
+
+
+const artistContainer = document.getElementById("artist-container");
+const nextArtist = document.getElementById("nextArtist");
+const prevArtist = document.getElementById("prevArtist");
+
+let scrollAmount = 0;
+const scrollStep = 250; // adjust movement per click
+
+nextArtist.addEventListener("click", () => {
+    artistContainer.scrollBy({ left: scrollStep, behavior: "smooth" });
+});
+
+prevArtist.addEventListener("click", () => {
+    artistContainer.scrollBy({ left: -scrollStep, behavior: "smooth" });
+});
+
+
+const cards = document.querySelectorAll(".artist-card");
+    cards.forEach(card => {
+      card.addEventListener("click", () => {
+        console.log("Card clicked");
+        const artistName = card.querySelector(".artist-name").textContent.toString();
+        console.log("Clicked artist:",{artistName});
+        loadSongs(artistName)
+        // You can use artistName here (show in player, search songs, etc.)
+      });
+    });
+const container = document.getElementById("artist-container");
 const apiKey="919dbfaa6b84bfe9b7fb4a43a75f13f9"
-const lastfm_url = `https://ws.audioscrobbler.com/2.0/?method=geo.gettopartists&country=india&api_key=${apiKey}&format=json`;
-async function getTopArtists() {
-      try {
-        const response = await fetch(lastfm_url);
-        const data = await response.json();
-        console.log(data);
-        const artistsDiv = document.getElementsByClassName("artists-section");
-        artistsDiv.innerHTML = "";
-
-        data.topartists.artist.slice(0, 10).forEach(artist => {
-          const img = artist.image.find(img => img.size === "large")["#text"];
-          const name = artist.name;
-
-          const artistCard = document.createElement("div");
-          artistCard.innerHTML = `
-            <img src="${img}" alt="${name}" style="width:100px;height:100px;border-radius:50%">
-            <p>${name}</p>
-          `;
-          artistsDiv.appendChild(artistCard);
-        });
-      } catch (error) {
-        console.error("Error fetching artists:", error);
-      }
-    }
-    getTopArtists();
+// const lastfm_url = `https://ws.audioscrobbler.com/2.0/?method=geo.gettopartists&country=india&api_key=${apiKey}&format=json&limit=6`;
 
 /* ---------------- FETCH SONGS (iTunes API) ---------------- */
 async function fetchSongs(query = "The Weeknd") {
@@ -41,93 +88,16 @@ async function fetchSongs(query = "The Weeknd") {
     const data = await res.json();
     return data.results;
 }
-const API_KEY = "85a0c93ad409da1e12b61af641095ebf"; // replace with your key
-const LIMIT = 5; // number of top artists
-
-const url = `https://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=${API_KEY}&format=json&limit=${LIMIT}`;
-fetch(url)
-  .then(res => res.json())
-  .then(data => {
-    const container = document.getElementById("artist-container");
-    if (!container) {
-    console.error("artist-container not found!");
-    return;
-  }
-
-  function getArtistImage(images) {
-  // images is an array of objects: [{size: "small", "#text": "..."}, ...]
-  // Iterate from largest to smallest
-  for (let i = images.length - 1; i >= 0; i--) {
-    if (images[i]["#text"]) return images[i]["#text"];
-  }
-  return "https://via.placeholder.com/150"; // fallback image
-}
-
-    container.innerHTML = ""; // Clear any previous content
-
-    const topArtists = data.artists.artist;
-
-    topArtists.forEach(artist => {
-      const card = document.createElement("div");
-      card.classList.add("artist-card");
-
-      card.innerHTML = `
-        <img src="${artist.image[2]["#text"]}" alt="${artist.name}" class="artist-image">
-        <span class="artist-name">${artist.name}</span>
-      `;
-      card.innerHTML = `
-  <img src="${getArtistImage(artist.image)}" alt="${artist.name}" class="artist-image">
-  <span class="artist-name">${artist.name}</span>
-`;
-
-      // Click event to open Last.fm page or fetch songs
-      card.addEventListener("click", () => {
-        loadSongs(artist.name) // opens Last.fm page in new tab
-        // Or you can trigger your song fetching function here
-      });
-
-      container.appendChild(card);
-    });
-})
-.catch(err => console.error("Error fetching top artists:", err));
 
 
 
-const cards = document.querySelectorAll(".artist-card");
- cards.forEach(card => {
-    card.addEventListener("click", () => {
-      const artistName = card.querySelector(".artist-name").textContent;
-      
-    //   console.log("Clicked artist:",{"artistName"});
-      // You can use artistName here (show in player, search songs, etc.)
-    });
-  });
-// fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`)
-//   .then(res => res.json())
-//   .then(data => console.log(data.feed.results));
-
-// const url = "https://rss.applemarketingtools.com/api/v2/us/music/most-played-artists/10/artists.json";
-// const proxy = "https://cors-anywhere.herokuapp.com/"; // Free CORS proxy
-
-// async function fetchData() {
-//     try {
-//         const res = await fetch(proxy + url);
-//         const data = await res.json();
-//         console.log(data);
-//     } catch (error) {
-//         console.error("Error fetching data:", error);
-//     }
-// } 
-
-// fetchData();
-
-/* ---------------- LOAD SONGS ---------------- */
-async function loadSongs(query) {
-    try {
-        tracks = await fetchSongs(query);
-        const songsList = document.querySelector('.songs-list');
+      /* ---------------- LOAD SONGS ---------------- */
+      async function loadSongs(query) {
+        try {
+          tracks = await fetchSongs(query);
+          const songsList = document.querySelector('.songs-list');
         songsList.innerHTML = '';
-
+        
         tracks.forEach((track, index) => {
             const minutes = Math.floor(track.trackTimeMillis / 60000);
             const seconds = Math.floor((track.trackTimeMillis % 60000) / 1000);
@@ -135,36 +105,41 @@ async function loadSongs(query) {
             const songItem = document.createElement('div');
             songItem.classList.add('song-item');
             songItem.innerHTML = `
-                <div class="song-number">${index + 1}</div>
-                <div class="song-info">
-                    <img src="${track.artworkUrl100.replace("100x100", "200x200")}" alt="cover" class="song-cover">
+            <div class="song-number">${index + 1}</div>
+            <div class="song-info">
+            <img src="${track.artworkUrl100.replace("100x100", "200x200")}" alt="cover" class="song-cover">
                     <div class="song-details">
                         <h3 class="song-title">${track.trackName}</h3>
                         <p class="song-artist">${track.artistName}</p>
-                    </div>
-                </div>
-                <div class="song-duration">${minutes}:${seconds < 10 ? '0' : ''}${seconds}</div>
+                        </div>
+                        </div>
+                        <div class="song-duration">${minutes}:${seconds < 10 ? '0' : ''}${seconds}</div>
             `;
             songItem.addEventListener('click', () => playTrack(index));
             songsList.appendChild(songItem);
-        });
-
-        // Load first track into player
+          });
+          
+          // Load first track into player
         updatePlayerUI(currentIndex);
-    } catch (error) {
+      } catch (error) {
         console.error("Error loading songs:", error);
+      }
     }
-}
 
 
+    document.querySelector(".featured-playlist").addEventListener('click', () => {
+        loadSongs("Summer Vibes")});
+    
 
-/* ---------------- PLAY TRACK ---------------- */
-function playTrack(index) {
+
+    
+    /* ---------------- PLAY TRACK ---------------- */
+    function playTrack(index) {
     const previewUrl = tracks[index].previewUrl;
     if (!previewUrl) {
         alert('No preview available for this song');
         return;
-    }
+      }
 
     audio.pause();
     audio = new Audio(previewUrl);
@@ -188,8 +163,9 @@ function updatePlayerUI(index) {
     document.querySelector('.player-song-title').textContent = track.trackName;
     document.querySelector('.player-song-artist').textContent = track.artistName;
     document.querySelector('.player-cover').src = track.artworkUrl100.replace("100x100", "400x400");
+    document.querySelector('.player-cover_small').src = track.artworkUrl100.replace("100x100", "400x400");
 }
-
+// console.log(tracks.trackName,"hello");
 /* ---------------- PLAY/PAUSE BUTTON ---------------- */
 const playButton = document.querySelector('.player-button.play');
 playButton.addEventListener('click', () => {
@@ -197,11 +173,11 @@ playButton.addEventListener('click', () => {
     if (isPlaying) {
         audio.pause();
         isPlaying = false;
-        clearInterval(progressInterval);
+        // clearInterval(progressInterval);
     } else {
         audio.play();
         isPlaying = true;
-        startProgress();
+        // startProgress();
     }
     updatePlayButton();
 });
@@ -273,52 +249,111 @@ window.onload = () => {
 //     loadSongs(artistNames.textContent)
 //     console.log(artistNames.textContent)
 // })
- const openBtn = document.getElementById("nav-item");
-const closeBtn = document.getElementById("closeSearchBtn");
-const overlay = document.getElementById("searchOverlay");
+// const openBtn = document.getElementById("openSearchBtn");
+// const closeBtn = document.getElementById("closeSearchBtn");
+// const searchBar = document.getElementById("searchBar");
+const searchInput = document.getElementById("searchInput");
+let debounceTimer;
 
 // openBtn.addEventListener("click", () => {
-//   overlay.style.display = "block";
+//   searchBar.classList.add("active");
 //   document.getElementById("searchInput").focus();
 // });
 
 // closeBtn.addEventListener("click", () => {
-//   overlay.style.display = "none";
+//   searchBar.classList.remove("active");
 // });
 
-// Handle Search (dummy data for now)
-document.getElementById("searchInput").addEventListener("keyup", (e) => {
-  if (e.key === "Enter") {
-    performSearch(e.target.value);
+const buttons = document.querySelectorAll(".nav-item");
+
+  buttons.forEach(btn => {
+    btn.addEventListener("click", function() {
+      // remove active from all
+      buttons.forEach(b => b.classList.remove("active"));
+      // add active to the clicked one
+      this.classList.add("active");
+    });
+  });
+
+
+searchInput.addEventListener("input", function() {
+  clearTimeout(debounceTimer);
+  const query = this.value.trim();
+  if (!query) {
+    suggestionsBox.style.display = "none";
+    return;
+  }
+    // Example: call your API
+    debounceTimer = setTimeout(() => {
+    loadSongs(query);
+  }, 700);
+});
+
+
+// function performSearch(query) {
+//   if (!query) return;
+
+//   // TODO: Replace with real API call
+//   /* The `const dummyResults` array is storing dummy data for search results. Each object in the array
+//   represents a song with properties like `title`, `artist`, and `id`. This data is used to simulate
+//   search results in the application for testing purposes. */
+//   const dummyResults = [
+    
+//   ];
+
+//   const resultsDiv = document.getElementById("searchResults");
+//   resultsDiv.innerHTML = dummyResults
+//     .map(
+//       (r) => `
+//         <div class="song">
+//           <span>${r.title} - ${r.artist}</span>
+//           <button onclick="playSong('${r.id}')">Play</button>
+//         </div>
+//       `
+//     )
+//     .join("");
+// }
+
+// function playSong(id) {
+//   console.log("Playing:", id);
+//   // hook into your player logic
+// }
+// const audio = document.getElementById("audioPlayer");
+const volumeBar = document.querySelector(".volume-bar");
+const volumeFill = document.querySelector(".volume-bar-fill");
+const mute = document.querySelector("#mute");
+// default volume
+audio.volume = 1;
+
+mute.addEventListener("click", () => {
+  console.log("Mute clicked");
+  if (audio.volume > 0) {
+    audio.volume = 0;
+    // volumeFill.style.width = "0%";
+    mute.innerHTML = '<i class="fa-solid fa-volume-xmark"></i>'
+  } else {
+    audio.volume = 1;
+    // volumeFill.style.width = "100%";
+    mute.innerHTML = '<i class="fas fa-volume-up"></i>';
   }
 });
 
-function performSearch(query) {
-  if (!query) return;
+volumeBar.addEventListener("click", (e) => {
+  const barWidth = volumeBar.clientWidth;
+  const clickX = e.offsetX;
+  const volume = clickX / barWidth;
 
-  // TODO: Replace with real API call
-  const dummyResults = [
-    { title: "Song A", artist: "Artist 1", id: "vid1" },
-    { title: "Song B", artist: "Artist 2", id: "vid2" },
-  ];
+  audio.volume = volume;
+  volumeFill.style.width = (volume * 100) + "%";
+});
 
-  const resultsDiv = document.getElementById("searchResults");
-  resultsDiv.innerHTML = dummyResults
-    .map(
-      (r) => `
-        <div class="song">
-          <span>${r.title} - ${r.artist}</span>
-          <button onclick="playSong('${r.id}')">Play</button>
-        </div>
-      `
-    )
-    .join("");
+// Example: play a song from API
+function playSong(songUrl, cover, title, artist) {
+  audio.src = songUrl;
+  audio.play();
+
+  // Update Now Playing UI
+  document.querySelector(".player-song-title").textContent = title;
+  document.querySelector(".player-song-artist").textContent = artist;
+  document.querySelector(".player-song-info img").src = cover;
 }
-
-function playSong(id) {
-  console.log("Playing:", id);
-  // hook into your player logic
-}
-// Arjit_singh
-
-
