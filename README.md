@@ -1,7 +1,7 @@
-# 🎵 Musicly – Online Music Player  
+# 🎵 Rish – Online Music Player  
 
 ## 🚀 Overview  
-Musicly is a web-based music player where users can search, play, and manage their playlists.  
+Rish is a web-based music player where users can search, play, and manage their playlists.  
 Built with Django (backend) and modern frontend for smooth audio streaming.  
 
 ## ✨ Features  

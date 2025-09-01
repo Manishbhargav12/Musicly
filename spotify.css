@@ -13,6 +13,7 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+
 body {
     background-color: #121212;
     color: white;
@@ -31,6 +32,7 @@ body {
     padding: 10px 20px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     border-radius: 15px;
+    height: 9vh;
 }
 .logo {
     font-weight: bold;
@@ -48,7 +50,7 @@ body {
     display: flex;
 }
 .searchBar input {
-    width: 100%;
+    width: 30vw;
     padding: 8px 12px;
     border: 1px solid #ddd;
     border-radius: 20px;
@@ -60,7 +62,10 @@ body {
     border: none;
     border-radius: 20px;
     cursor: pointer;
-    font-size: 14px;
+    /* font-size: 1em; */
+    height: 4vh;
+    width: 7vw;
+
 }
 /* .login-btn {
     background: transparent;
@@ -69,7 +74,9 @@ body {
     transition: all 0.3s ease;
 } */
 
-
+#right-panel-button{
+    cursor: pointer;
+}
 
 
 .signup-btn {
@@ -174,11 +181,6 @@ body {
     color:#FFFFFF
 } */
 
-@media (min-width: 768px) {
-.button-36 {
-        padding: 0 2.6rem;
-    }
-}
 
 
 /* .signup-btn:hover {
@@ -215,6 +217,7 @@ body {
     padding: 20px;
     overflow-y: auto;
     border-left: 1px solid #282828;
+
 }
 
 #icon{
@@ -238,41 +241,7 @@ body {
     }
 
 /* Responsive Styles */
-@media (max-width: 1200px) {
-    .app-container {
-        grid-template-columns: 250px 1fr;
-    }
-    .right-panel {
-        display: none;
-    }
-}
 
-@media (max-width: 768px) {
-    .app-container {
-        grid-template-columns: 1fr;
-    }
-    .sidebar {
-        display: none;
-    }
-    .playlist-card {
-        flex-direction: column;
-    }
-    .playlist-cover {
-        width: 100%;
-        height: auto;
-    }
-    .player-controls {
-        flex-direction: column;
-        align-items: center;
-    }
-    .player-song-info {
-        flex-direction: column;
-        align-items: center;
-    }
-    .player-right-controls {
-        justify-content: center;
-    }
-}
 
 /* Additional styles for better responsiveness */
 .player-controls {
@@ -698,11 +667,13 @@ h1, h2, h3 {
         }
 
         /* Player Controls Styles */
-        .player-controls {
+        .player-footbar {
             background-color: #181818;
             display: flex;
             align-items: center;
+            justify-content: space-between;
             padding: 0 20px;
+            border-top: 1px solid #282828;
             border-top: 1px solid #282828;
         }
 
@@ -787,8 +758,9 @@ h1, h2, h3 {
         }
 
         .player-progress {
-            width: 100%;
+            width: 100vw;
             max-width: 600px;
+            /* min-width: 50px; */
             display: flex;
             align-items: center;
             gap: 10px;
@@ -807,8 +779,9 @@ h1, h2, h3 {
             border-radius: 2px;
             cursor: pointer;
             position: relative;
+            width: 1vw;
         }
-
+        
         .progress-bar-fill {
             position: absolute;
             top: 0;
@@ -880,7 +853,7 @@ h1, h2, h3 {
             }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 872px) {
             .app-container {
                 grid-template-columns: 1fr;
             }
@@ -894,7 +867,67 @@ h1, h2, h3 {
                 width: 100%;
                 height: auto;
             }
-
+            .button-36 {
+                padding: 0 2.6rem;
+            }
+            .player-footbar {
+                flex-direction: column;  /* stack vertically */
+                padding: 10px;           /* reduce padding */
+                text-align: center;      /* center items */
+            }
         }
 
 
+
+
+@media (min-width: 300px) and (max-width: 400px) {
+    .app-container {
+        grid-template-columns: 1fr;
+    }
+    .sidebar {
+        display: none;
+    }
+    .playlist-card {
+        flex-direction: column;
+    }
+    .playlist-cover {
+        width: 100%;
+        height: auto;
+    }
+    body{
+        overflow-x: hidden;
+    }
+    .auth-buttons{
+        display: none;
+    }
+}
+
+@media (max-width: 400px) {
+    .app-container {
+        grid-template-columns: 1fr;
+    }
+    .sidebar {
+        display: none;
+    }
+    .right-panel{
+        display: none;
+    }
+    .playlist-card {
+        flex-direction: column;
+    }
+    .playlist-cover {
+        width: 100%;
+        height: auto;
+    }
+    .player-controls {
+        flex-direction: column;
+        align-items: center;
+    }
+    .player-song-info {
+        flex-direction: column;
+        align-items: center;
+    }
+    .player-right-controls {
+        justify-content: center;
+    }
+}

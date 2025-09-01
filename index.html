@@ -219,13 +219,13 @@
         <aside class="right-panel">
             <h3 class="right-panel-title">
                 <span>Now Playing</span>
-                <i class="fas fa-list"></i>
+                <i class="fas fa-list" id="right-panel-button"></i>
             </h3>
             
             <img src="https://placehold.co/250x250" alt="Current album cover with neon aesthetic" class="player-cover" style="width: 100%; border-radius: 10px; margin-bottom: 20px;">
             
-            <h3 style="font-size: 20px; margin-bottom: 5px;">Blinding Lights</h3>
-            <p style="color: var(--gray); margin-bottom: 30px;">The Weeknd</p>
+            <h3 style="font-size: 20px; margin-bottom: 5px;" id="player-song-title">Blinding</h3>
+            <p style="color: var(--gray); margin-bottom: 30px;" id="player-song-artist">The Weeknd</p>
 <!--             
             <div class="queue-title">Next in queue</div>
             <div class="queue-list">
@@ -254,7 +254,7 @@
         </aside>
     </div>
     
-    <div class="player-controls">
+    <div class="player-footbar">
         <div class="player-song-info">
             <img src="https://placehold.co/50x50" alt="Currently playing album cover" class="player-cover_small">
             <div class="player-song-details">
@@ -273,7 +273,7 @@
                 <button class="player-button"><i class="fas fa-redo"></i></button>
             </div>
             
-            <div class="player-progress">
+            <div class="player-progress" id="player_bar">
                 <span class="progress-time">0:00</span>
                 <div class="progress-bar">
                     <div class="progress-bar-fill"></div>

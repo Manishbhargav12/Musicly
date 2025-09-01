@@ -162,6 +162,8 @@ function updatePlayerUI(index) {
 
     document.querySelector('.player-song-title').textContent = track.trackName;
     document.querySelector('.player-song-artist').textContent = track.artistName;
+    document.querySelector('#player-song-title').textContent = track.trackName;
+    document.querySelector('#player-song-artist').textContent = track.artistName;
     document.querySelector('.player-cover').src = track.artworkUrl100.replace("100x100", "400x400");
     document.querySelector('.player-cover_small').src = track.artworkUrl100.replace("100x100", "400x400");
 }
@@ -290,6 +292,15 @@ searchInput.addEventListener("input", function() {
 });
 
 
+const right_panel_button=document.querySelector("#right-panel-button")
+const right_panel=document.querySelector(".right-panel")
+right_panel_button.addEventListener("click",()=>{
+  // alert("geloo")
+  right_panel.style.display = "none";
+  
+
+})
+
 // function performSearch(query) {
 //   if (!query) return;
 
@@ -348,12 +359,12 @@ volumeBar.addEventListener("click", (e) => {
 });
 
 // Example: play a song from API
-function playSong(songUrl, cover, title, artist) {
-  audio.src = songUrl;
-  audio.play();
+// function playSong(songUrl, cover, title, artist) {
+//   audio.src = songUrl;
+//   audio.play();
 
-  // Update Now Playing UI
-  document.querySelector(".player-song-title").textContent = title;
-  document.querySelector(".player-song-artist").textContent = artist;
-  document.querySelector(".player-song-info img").src = cover;
-}
+//   // Update Now Playing UI
+//   document.querySelector(".player-song-title").textContent = title;
+//   document.querySelector(".player-song-artist").textContent = artist;
+//   document.querySelector(".player-song-info img").src = cover;
+// }
