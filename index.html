@@ -11,6 +11,9 @@
 <body>
     
     <div class="app-container">
+        <!-- <button class="mobile-toggle left-toggle" id="sidebarToggle"> -->
+    <!-- <i class="fas fa-bars"></i> -->
+        <!-- </button> -->
         <aside class="sidebar">
             <!-- <div class="logo">
                 <i class="fas fa-music"></i>
@@ -168,7 +171,7 @@
                         </div>
                         <div class="song-duration">3:20</div>
                     </div>
-                    <div class="song-item">
+                    <!-- <div class="song-item">
                         <div class="song-number">2</div>
                         <div class="song-info">
                             <img src="https://placehold.co/50x50" alt="Album cover with neon typography" class="song-cover">
@@ -209,13 +212,15 @@
                                 <h3 class="song-title">Stay</h3>
                                 <p class="song-artist">The Kid LAROI, Justin Bieber</p>
                             </div>
-                        </div>
-                        <div class="song-duration">2:21</div>
-                    </div>
+                        </div> -->
+                        <!-- <div class="song-duration">2:21</div> -->
+                    <!-- </div> -->
                 </div>
             </section>  
         </main>
-        
+        <!-- <button class="mobile-toggle right-toggle" id="rightPanelToggle"> -->
+    <!-- <i class="fas fa-music"></i> -->
+<!-- </button> -->
         <aside class="right-panel">
             <h3 class="right-panel-title">
                 <span>Now Playing</span>
@@ -225,43 +230,20 @@
             <img src="https://placehold.co/250x250" alt="Current album cover with neon aesthetic" class="player-cover" style="width: 100%; border-radius: 10px; margin-bottom: 20px;">
             
             <h3 style="font-size: 20px; margin-bottom: 5px;" id="player-song-title">Blinding</h3>
-            <p style="color: var(--gray); margin-bottom: 30px;" id="player-song-artist">The Weeknd</p>
-<!--             
-            <div class="queue-title">Next in queue</div>
-            <div class="queue-list">
-                <div class="queue-item">
-                    <img src="https://placehold.co/50x50" alt="Next album cover" class="queue-cover">
-                    <div class="queue-details">
-                        <h4 class="queue-title">Save Your Tears</h4>
-                        <p class="queue-artist">The Weeknd</p>
-                    </div>
-                </div>
-                <div class="queue-item">
-                    <img src="https://placehold.co/50x50" alt="Next album cover" class="queue-cover">
-                    <div class="queue-details">
-                        <h4 class="queue-title">Don't Start Now</h4>
-                        <p class="queue-artist">Dua Lipa</p>
-                    </div>
-                </div>
-                <div class="queue-item">
-                    <img src="https://placehold.co/50x50" alt="Next album cover" class="queue-cover">
-                    <div class="queue-details">
-                        <h4 class="queue-title">Levitating</h4>
-                        <p class="queue-artist">Dua Lipa ft. DaBaby</p>
-                    </div>
-                </div>
-            </div> -->
+            <p style="color: var(--gray); margin-bottom: 30px;" id="player-song-artist">The Weeknd</p>             
+           
         </aside>
     </div>
     
-    <div class="player-footbar">
+    <!-- <div class="player-footbar">
+        
         <div class="player-song-info">
             <img src="https://placehold.co/50x50" alt="Currently playing album cover" class="player-cover_small">
             <div class="player-song-details">
                 <h3 class="player-song-title">Blinding Lights</h3>
                 <p class="player-song-artist">The Weeknd</p>
             </div>
-            <i class="fas fa-heart"></i>
+            <i class="fas fa-heart"></i> 
         </div>
         
         <div class="player-center-controls">
@@ -284,14 +266,48 @@
         
         <div class="player-right-controls">
             <div class="volume-control">
-                    <!-- <audio id="audioPlayer"></audio> -->
+                     <audio id="audioPlayer"></audio> 
                 <button class="player-button" id="mute"><i class="fas fa-volume-up"></i></button>
                 <div class="volume-bar">
                     <div class="volume-bar-fill"></div>
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
+
+
+    <footer class="music-footer">
+        <div class="footer-content">
+            <div class="song-info">
+                <div class="album-art">
+                    <img class="player-cover_small"  alt="bhai api se nahi aaya kya karu" />
+                </div>
+                <div class="track-info">
+                    <div class="track-name">Electric Dreams</div>
+                    <!-- <div class="artist-name">Neon Waves</div> -->
+                </div>
+            </div>
+
+            <div class="controls">
+                <button class="control-btn prev-btn" id="next" title="Previous Track">
+                    ⏮
+                </button>
+                <button class="control-btn play-pause" id="play" title="Play/Pause">
+                    ▶
+                </button>
+                <button class="control-btn next-btn" id="prev" title="Next Track">
+                    ⏭
+                </button>
+            </div>
+
+            <div class="volume-controls">
+                <button class="control-btn mute-btn" id="mute" title="Mute/Unmute">
+                    🔊
+                </button>
+                <input type="range" class="volume-slider" min="0" max="100" value="80"  title="Volume Control">
+            </div>
+        </div>
+    </footer>
 
 <script src="spotify.js" defer>
 
