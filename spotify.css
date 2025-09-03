@@ -145,7 +145,7 @@ body {
     }
 
 .signup-btn:hover span:last-child {
-    transform: translateX(-50%) translateY(-100%);
+    transform: translateX(-50%) translateY(-50%);
     opacity: 1;
     transition: all 900ms cubic-bezier(0.48, 0, 0.12, 1);
     }
@@ -306,35 +306,13 @@ h1, h2, h3 {
 
 
 /* Popup Search Bar (hidden by default) */
-.search-popup {
-    position: fixed;
-    top: -60px; /* Hidden above screen */
-    left: 50%;
-    transform: translateX(-50%);
-    width: 30%;
-    background: #1a1a1a;
-    border: 1px solid #1a1a1a;
-    padding: 10px;
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-    transition: top 0.3s ease-in-out;
-    z-index: 1000;
-}
+
 
 /* Show Search Bar */
 /* .search-popup.active {
   top: 20px; /* Slide down */
 /* } */
 
-.search-popup input {
-    flex: 1;
-    padding: 8px;
-    border: 1px solid #333030;
-    border-radius: 4px;
-}
- */
 
 /* .song {
     display: flex;
@@ -485,10 +463,10 @@ h1, h2, h3 {
     }
 
     .artist-btn {
-    background: #222;
+    background: #121212;
     color: white;
     border: none;
-    padding: 10px 15px;
+    /* padding: 0; */
     border-radius: 50%;
     cursor: pointer;
     font-size: 18px;
@@ -508,6 +486,8 @@ h1, h2, h3 {
 
     .artist-card {
     flex: 0 0 auto;
+    width: 150px;         /* adjust to your design */
+    margin-right: 10px;
     text-align: center;
     }
 
@@ -904,6 +884,7 @@ h1, h2, h3 {
     border-radius: 2px;
     width: 80%;
 } */
+ 
      .player-progress {
     width: 100%;          /* take available width */
     max-width: 600px;     /* but don’t exceed */
@@ -1140,7 +1121,7 @@ h1, h2, h3 {
             left: 0;
             right: 0;
             background-color: #181818; /* Spotify-style dark */
-border-top: 1px solid #282828;
+            border-top: 1px solid #282828;
             /* background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%); */
             padding: 20px;
             box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
@@ -1257,6 +1238,7 @@ border-top: 1px solid #282828;
             border-radius: 2px;
             outline: none;
             -webkit-appearance: none;
+            appearance: none;
         }
 
         .volume-slider::-webkit-slider-thumb {
